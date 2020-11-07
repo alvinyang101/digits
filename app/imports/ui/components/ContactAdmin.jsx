@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, Image } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-
+import { Link } from 'react-router-dom';
 /** Renders a single row in the List Stuff (Admin) table. See pages/ListStuffAdmin.jsx. */
 class ContactAdmin extends React.Component {
   render() {
@@ -18,6 +18,9 @@ class ContactAdmin extends React.Component {
             <Card.Description>
               {this.props.contact.description}
             </Card.Description>
+          </Card.Content>
+          <Card.Content extra>
+            <Link to={`/edit/${this.props.contact._id}`}>Edit</Link>
           </Card.Content>
         </Card>
     );
