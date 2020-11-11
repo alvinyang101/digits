@@ -5,7 +5,6 @@ import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import PropTypes from 'prop-types';
 import swal from 'sweetalert';
 import { Notes } from '../../api/note/Notes';
-import { Contacts } from '../../api/contact/Contacts';
 
 /** Create a schema to specify the structure of the data to appear in the form. */
 const formSchema = Notes.schema;
@@ -15,7 +14,7 @@ class AddNote extends React.Component {
 
   submit(data, formRef) {
     const { note, owner, contactID, createdAt } = data;
-    Contacts.collection.insert({ note, owner, contactID, createdAt },
+    Notes.collection.insert({ note, owner, contactID, createdAt },
       (error) => {
         if (error) {
           swal('Error', error.message, 'error');
@@ -36,7 +35,7 @@ class AddNote extends React.Component {
         <SubmitField value='Submit'/>
         <ErrorsField/>
         <HiddenField name='owner' value={this.props.owner}/>
-        <HiddenField name='contactId' value={this.props.contactId}/>
+        <HiddenField name='contactID' value={this.props.contactId}/>
         <HiddenField name='createdAt' value={new Date()}/>
       </Segment>
     </AutoForm>
